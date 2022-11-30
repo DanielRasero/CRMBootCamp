@@ -7,7 +7,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-public class contactConverter {
+public class ContactConverter {
 
     public static ContactDTO ToDTO(Contact contact) {
 

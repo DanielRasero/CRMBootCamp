@@ -3,6 +3,7 @@ package com.CRM.weekAssessment.converters;
 import com.CRM.weekAssessment.dtos.ContactDTO;
 import com.CRM.weekAssessment.entities.Contact;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,7 +33,7 @@ public class contactConverter {
 
         contact.setDescription(contact.getDescription());
         contact.setId(dto.getId());
-        contact.setDate(java.sql.Date.valueOf(dto.getDate()));
+        contact.setDate(Date.valueOf(dto.getDate()).toLocalDate());
 
         return contact;
     }

@@ -1,38 +1,31 @@
-package com.CRM.weekAssessment.entities;
+package com.CRM.weekAssessment.dtos;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
-@Entity
-@Table(name = "contacts")
-public class Contact {
+public class ContactDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column
+    @Autowired
     private long id;
 
+    @Autowired
+    private Long opportunity;
 
-    @ManyToOne
-    @JoinColumn(name = "opportunity_id")
-    private Opportunity opportunity;
+    @Autowired
+    private Long user;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-
-    @Column
-    private Date date;
-    @Column
+    @Autowired
+    private LocalDate date;
+    @Autowired
     private String description;
 
-    public Contact() {
+    public ContactDTO() {
     }
 
     @Autowired
-    public Contact(long id, Opportunity opportunity, User userId, Date date, String description) {
+    public ContactDTO(long id, Long opportunity, Long userId, LocalDate date, String description) {
         this.id = id;
         this.opportunity = opportunity;
         this.user = userId;
@@ -48,27 +41,27 @@ public class Contact {
         this.id = id;
     }
 
-    public Opportunity getOpportunity() {
+    public Long getOpportunity() {
         return opportunity;
     }
 
-    public void setOpportunity(Opportunity opportunity) {
+    public void setOpportunity(Long opportunity) {
         this.opportunity = opportunity;
     }
 
-    public User getUser() {
+    public Long getUser() {
         return user;
     }
 
-    public void setUser(User userId) {
+    public void setUser(Long userId) {
         this.user = userId;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

@@ -32,7 +32,6 @@ public class ContactConverter {
         Contact contact = new Contact();
 
         contact.setDescription(contact.getDescription());
-        contact.setId(dto.getId());
         contact.setDate(Date.valueOf(dto.getDate()).toLocalDate());
 
         return contact;

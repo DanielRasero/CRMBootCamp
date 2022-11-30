@@ -23,7 +23,6 @@ public class OpportunityConverter {
 
         Opportunity opp = new Opportunity();
 
-        opp.setId(dto.getId());
         opp.setCompany(dto.getCompany());
         opp.setName(dto.getName());
         opp.setClient(dto.isClient());

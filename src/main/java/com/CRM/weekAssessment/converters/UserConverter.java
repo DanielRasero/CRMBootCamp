@@ -20,7 +20,6 @@ public class UserConverter {
     public static User ToEntity(UserDTO dto) {
 
         User user = new User();
-        user.setId(dto.getId());
         user.setUsername(dto.getUsername());
         user.setEmail(dto.getEmail());
         user.setPassword(dto.getPassword());

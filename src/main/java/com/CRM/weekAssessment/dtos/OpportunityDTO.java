@@ -1,38 +1,37 @@
-package com.CRM.weekAssessment.entities;
+package com.CRM.weekAssessment.dtos;
 
+import com.CRM.weekAssessment.entities.Contact;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@Table(name = "opportunity")
-public class Opportunity {
+public class OpportunityDTO {
 
-    @Column
+
+    @Autowired
     private boolean client;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Autowired
     private long id;
 
-    @OneToMany(mappedBy = "opportunity")
-    private List<Contact> contacts;
+    @Autowired
+    private List<ContactDTO> contacts;
 
-    @Column
+    @Autowired
     private String name;
-    @Column
+    @Autowired
     private String lastName;
 
-    @Column
+    @Autowired
     private String company;
 
-    public Opportunity() {
+    public OpportunityDTO() {
     }
 
     @Autowired
-    public Opportunity(boolean client, long id, ArrayList<Contact> contacts, String name, String lastName, String company) {
+    public OpportunityDTO(boolean client, long id, List<ContactDTO> contacts, String name, String lastName, String company) {
         this.client = client;
         this.id = id;
         this.contacts = contacts;
@@ -57,11 +56,11 @@ public class Opportunity {
         this.id = id;
     }
 
-    public List<Contact> getContacts() {
+    public List<ContactDTO> getContacts() {
         return contacts;
     }
 
-    public void setContacts(ArrayList<Contact> contacts) {
+    public void setContacts(List<ContactDTO> contacts) {
         this.contacts = contacts;
     }
 

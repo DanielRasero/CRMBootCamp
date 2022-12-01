@@ -36,7 +36,7 @@ public class UserController {
     public void registerUser(@RequestBody UserDTO persona) {service.addUser(persona);}
 
     @PutMapping("/updateUser")
-    public void updateUser(@RequestBody User persona) {service.updateUser(persona);}
+    public void updateUser(@RequestBody UserDTO persona) {service.updateUser(persona);}
 
     @DeleteMapping("/deleteUser/{id}")
     public void deleteUser(@PathVariable long id){

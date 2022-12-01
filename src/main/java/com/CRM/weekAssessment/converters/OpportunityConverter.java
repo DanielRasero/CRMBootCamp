@@ -1,7 +1,12 @@
 package com.CRM.weekAssessment.converters;
 
 import com.CRM.weekAssessment.dtos.OpportunityDTO;
+import com.CRM.weekAssessment.dtos.UserDTO;
 import com.CRM.weekAssessment.entities.Opportunity;
+import com.CRM.weekAssessment.entities.User;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class OpportunityConverter {
 
@@ -29,6 +34,18 @@ public class OpportunityConverter {
         opp.setLastName(dto.getLastName());
 
         return opp;
+    }
+
+    public static List<OpportunityDTO> EntitiesToDTOs(List<Opportunity> opportunities) {
+
+        List<OpportunityDTO> dtoList = new ArrayList<>();
+
+        for (Opportunity opportunity : opportunities) {
+            OpportunityDTO dto = toDTO(opportunity);
+            dtoList.add(dto);
+        }
+
+        return dtoList;
     }
 
 }

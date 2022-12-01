@@ -1,6 +1,7 @@
 package com.CRM.weekAssessment.services;
 
-import com.CRM.weekAssessment.entities.Contact;
+import com.CRM.weekAssessment.converters.ContactConverter;
+import com.CRM.weekAssessment.dtos.ContactDTO;
 import com.CRM.weekAssessment.repositories.ContactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,28 +14,28 @@ public class ContactServices {
     @Autowired
     private ContactRepository repository;
 
-    public List<Contact> getContacts() {
+    public List<ContactDTO> getContacts() {
 
-        return new ArrayList<>(repository.findAll());
+        return new ArrayList<>(ContactConverter.EntitiesToDTOs(repository.findAll()));
     }
 
-    public Contact getContactById(long id) {
+    public ContactDTO getContactById(long id) {
 
-        return repository.findById(id).get();
+        return ContactConverter.ToDTO(repository.findById(id).get());
     }
 
-    public void addContact(Contact contact) {
+    public void addContact(ContactDTO contact) {
 
-        repository.save(contact);
+        repository.save(ContactConverter.ToEntity(contact));
     }
 
-    public void updateContact(Contact contact) {
+    public void updateContact(ContactDTO contact) {
 
-        repository.save(contact);
+        repository.save(ContactConverter.ToEntity(contact));
     }
 
-    public void deleteContact(Contact contact) {
+    public void deleteContact(ContactDTO contact) {
 
-        repository.delete(contact);
+        repository.delete(ContactConverter.ToEntity(contact));
     }
 }

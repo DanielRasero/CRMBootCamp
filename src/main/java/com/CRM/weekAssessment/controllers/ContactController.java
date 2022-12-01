@@ -1,6 +1,6 @@
 package com.CRM.weekAssessment.controllers;
 
-import com.CRM.weekAssessment.entities.Contact;
+import com.CRM.weekAssessment.dtos.ContactDTO;
 import com.CRM.weekAssessment.services.ContactServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,25 +15,25 @@ public class ContactController {
     private ContactServices service = new ContactServices();
 
     @GetMapping("/")
-    public List<Contact> getContacts() {
+    public List<ContactDTO> getContacts() {
 
         return service.getContacts();
     }
 
     @GetMapping("/{id}")
-    public Contact getContactById(@PathVariable("id") Long id) {
+    public ContactDTO getContactById(@PathVariable("id") Long id) {
 
         return service.getContactById(id);
     }
 
     @PostMapping("/registerContact")
-    public void registerContact(@RequestBody Contact contact) {
+    public void registerContact(@RequestBody ContactDTO contact) {
 
         service.addContact(contact);
     }
 
     @PutMapping("/updateContact")
-    public void updateContact(@RequestBody Contact contact) {
+    public void updateContact(@RequestBody ContactDTO contact) {
 
         service.updateContact(contact);
     }

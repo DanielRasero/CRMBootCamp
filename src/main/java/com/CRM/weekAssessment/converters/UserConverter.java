@@ -1,7 +1,12 @@
 package com.CRM.weekAssessment.converters;
 
+import com.CRM.weekAssessment.dtos.ContactDTO;
 import com.CRM.weekAssessment.dtos.UserDTO;
+import com.CRM.weekAssessment.entities.Contact;
 import com.CRM.weekAssessment.entities.User;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserConverter {
 
@@ -25,5 +30,17 @@ public class UserConverter {
         user.setPassword(dto.getPassword());
 
         return user;
+    }
+
+    public static List<UserDTO>  EntitiesToDTOs(List<User> users) {
+
+        List<UserDTO> dtoList = new ArrayList<UserDTO>();
+
+        for (User user : users) {
+            UserDTO dto = ToDTO(user);
+            dtoList.add(dto);
+        }
+
+        return dtoList;
     }
 }

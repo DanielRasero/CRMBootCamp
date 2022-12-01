@@ -15,7 +15,7 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private UserServices service = new UserServices();
+    private UserServices service;
 
     public UserController(UserServices service) {
         this.service = service;
@@ -28,6 +28,9 @@ public class UserController {
 
     @GetMapping("/{id}")
     public UserDTO getUser(@PathVariable long id) {return service.getUserById(id);}
+
+    @GetMapping("/findEmail/{email}")
+    public boolean getUserByEmail(@PathVariable("email") String email) {return service.getUserByEmail(email);}
 
     @GetMapping("/findContacts/{id}")
     public List<ContactDTO> getContacts(@PathVariable long id) {return service.findContactsById(id);}

@@ -17,8 +17,12 @@ import java.util.Optional;
 @Service
 public class UserServices {
 
+    private final UserRepository repository;
+
     @Autowired
-    private UserRepository repository;
+    public UserServices(UserRepository repository) {
+        this.repository = repository;
+    }
 
 
     public List<UserDTO> getUsers() {
@@ -48,6 +52,18 @@ public class UserServices {
     public void deleteUser(UserDTO user) {
 
         repository.delete(UserConverter.ToEntity(user));
+    }
+
+    public Boolean getUserByEmail(String email) {
+
+        boolean result= false;
+
+        User user = repository.findUserByEmail(email);
+
+        if (user != null)
+          return true;
+
+        return result ;
     }
 
     public List<ContactDTO> findContactsById(Long id) {

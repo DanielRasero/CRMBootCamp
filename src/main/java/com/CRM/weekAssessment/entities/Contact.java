@@ -3,8 +3,7 @@ package com.CRM.weekAssessment.entities;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.util.Date;
+import java.sql.Date;
 
 @Entity
 @Table(name = "contacts")
@@ -25,7 +24,7 @@ public class Contact {
     private User user;
 
     @Column
-    private LocalDate date;
+    private Date date;
     @Column
     private String description;
 
@@ -33,7 +32,7 @@ public class Contact {
     }
 
     @Autowired
-    public Contact(long id, Opportunity opportunity, User userId, LocalDate date, String description) {
+    public Contact(long id, Opportunity opportunity, User userId, Date date, String description) {
         this.id = id;
         this.opportunity = opportunity;
         this.user = userId;
@@ -65,11 +64,11 @@ public class Contact {
         this.user = userId;
     }
 
-    public LocalDate getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

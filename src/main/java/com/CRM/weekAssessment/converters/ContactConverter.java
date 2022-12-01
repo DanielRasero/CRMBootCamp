@@ -13,9 +13,9 @@ public class ContactConverter {
 
         ContactDTO dto = new ContactDTO();
 
-        dto.setDescription(contact.getDescription());
         dto.setId(contact.getId());
-        dto.setDate(contact.getDate());
+        dto.setDate(contact.getDate().toLocalDate());
+        dto.setDescription(contact.getDescription());
 
         if (contact.getOpportunity() != null) {
             dto.setOpportunity(contact.getOpportunity().getId());
@@ -31,8 +31,8 @@ public class ContactConverter {
     public static Contact ToEntity(ContactDTO dto) {
         Contact contact = new Contact();
 
-        contact.setDescription(contact.getDescription());
-        contact.setDate(Date.valueOf(dto.getDate()).toLocalDate());
+        contact.setDescription(dto.getDescription());
+        contact.setDate(java.sql.Date.valueOf(dto.getDate()));
 
         return contact;
     }

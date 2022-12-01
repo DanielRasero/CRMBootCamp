@@ -1,5 +1,7 @@
 package com.CRM.weekAssessment.controllers;
 
+import com.CRM.weekAssessment.dtos.ContactDTO;
+import com.CRM.weekAssessment.dtos.UserDTO;
 import com.CRM.weekAssessment.entities.User;
 import com.CRM.weekAssessment.services.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,15 +22,18 @@ public class UserController {
     }
 
     @GetMapping("/")
-    public List<User> getAllUsers() {
+    public List<UserDTO> getAllUsers() {
         return service.getUsers();
     }
 
     @GetMapping("/{id}")
-    public User getUser(@PathVariable long id) {return service.getUserById(id);}
+    public UserDTO getUser(@PathVariable long id) {return service.getUserById(id);}
+
+    @GetMapping("/findContacts/{id}")
+    public List<ContactDTO> getContacts(@PathVariable long id) {return service.findContactsById(id);}
 
     @PostMapping("/registerUser")
-    public void registerUser(@RequestBody User persona) {service.addUser(persona);}
+    public void registerUser(@RequestBody UserDTO persona) {service.addUser(persona);}
 
     @PutMapping("/updateUser")
     public void updateUser(@RequestBody User persona) {service.updateUser(persona);}

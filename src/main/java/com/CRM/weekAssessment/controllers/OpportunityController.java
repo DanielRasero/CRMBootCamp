@@ -1,6 +1,7 @@
 package com.CRM.weekAssessment.controllers;
 
-import com.CRM.weekAssessment.entities.Opportunity;
+import com.CRM.weekAssessment.dtos.ContactDTO;
+import com.CRM.weekAssessment.dtos.OpportunityDTO;
 import com.CRM.weekAssessment.services.OpportunityServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,25 +16,31 @@ public class OpportunityController {
     private OpportunityServices services = new OpportunityServices();
 
     @GetMapping("/")
-    public List<Opportunity> getOpportunities() {
+    public List<OpportunityDTO> getOpportunities() {
 
         return services.getOpportunities();
     }
 
     @GetMapping("/{id}")
-    public Opportunity getOpportunityById(@PathVariable("id") Long id) {
+    public OpportunityDTO getOpportunityById(@PathVariable("id") Long id) {
 
         return services.getOpportunityById(id);
     }
 
+    @GetMapping("/findContacts/{id}")
+    public List<ContactDTO> findContacts(@PathVariable("id") Long id){
+
+        return services.findContactsById(id);
+    }
+
     @PostMapping("registerOpportunity")
-    public void registerOpportunity(@RequestBody Opportunity opportunity) {
+    public void registerOpportunity(@RequestBody OpportunityDTO opportunity) {
 
         services.addOpportunity(opportunity);
     }
 
     @PutMapping("/updateOpportunity")
-    public void updateOpportunity(@RequestBody Opportunity opportunity) {
+    public void updateOpportunity(@RequestBody OpportunityDTO opportunity) {
 
         services.updateOpportunity(opportunity);
     }
